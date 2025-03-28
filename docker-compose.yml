@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:14
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: nursery_db
+      POSTGRES_USER: nursery_user
+      POSTGRES_PASSWORD: nursery_pass
+
+  web:
+    build: ./app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=devkey123
+      - DB_NAME=nursery_db
+      - DB_USER=nursery_user
+      - DB_PASSWORD=nursery_pass
+      - DB_HOST=db
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
