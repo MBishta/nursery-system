@@ -12,6 +12,9 @@
             <div class="col-md-6">
                 <a href="/register-child/" class="btn btn-primary w-100 p-3">👶 Register New Child</a>
 	      </div>
+	    <div class="col-md-6">
+               <a href="{% url 'register_parent' %}" class="btn btn-primary w-100 p-3">👨‍👩‍👧 Register New Parent</a>
+                </div>
             <div class="col-md-6">
                 <a href="/record-attendance/" class="btn btn-success w-100 p-3">🕒 Record Attendance</a>
 	      </div>
@@ -33,6 +36,12 @@
          <div class="col-md-6">
                 <a href="{% url 'register_parent' %}" class="btn btn-outline-secondary w-100 p-3">👨‍👩‍👧 Register Parent</a>
                     </div>
+         <div class="col-md-6">
+            <a href="{% url 'list_parents' %}" class="btn btn-light w-100 p-3">👨‍👩‍👧‍👦 View Parents</a>
+              </div>
+        <div class="col-md-6">
+            <a href="{% url 'list_children' %}" class="btn btn-info w-100 p-3">👶 View Children</a>
+              </div>
 	</div>
     </div>
 </body>

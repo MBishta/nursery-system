@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <h2>Edit Parent: {{ parent.first_name }} {{ parent.last_name }}</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+  </form>
+  <a href="{% url 'list_parents' %}">🔙 Back to Parents</a>
+{% endblock %}

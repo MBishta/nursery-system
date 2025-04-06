@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <div class="container py-4">
+    <h2>🧒 Children List with Parents 👨‍👩‍👧‍👦</h2>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Parent Name</th>
+          <th>Parent Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for child in children %}
+        <tr>
+          <td>{{ child.first_name }} {{ child.last_name }}</td>
+          <td>{{ child.age }}</td>
+          <td>{{ child.parent.first_name }} {{ child.parent.last_name }}</td>
+          <td>{{ child.parent.phone }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4">No children found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">🏠 Back to Home</a>
+  </div>
+{% endblock %}

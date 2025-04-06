@@ -17,7 +17,7 @@ class Child(models.Model):
     birth_date = models.DateField()
     gender = models.CharField(max_length=10, choices=[('male', 'Male'), ('female', 'Female')])
     health_notes = models.TextField(blank=True, null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True, blank=True)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='children', null=True, blank=True)
     registration_date = models.DateField(auto_now_add=True)
 
     def __str__(self):

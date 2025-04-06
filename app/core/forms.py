@@ -1,6 +1,14 @@
 from django import forms
 from core.models import Child, Parent
 
+
+
+class ChildForm(forms.ModelForm):
+    class Meta:
+        model = Child
+        fields = ['first_name', 'last_name', 'birth_date', 'parent']
+
+
 class ChildRegistrationForm(forms.ModelForm):
     class Meta:
         model = Child

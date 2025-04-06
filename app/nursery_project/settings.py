@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-9sn(^$$ed7c=81u7rrlq$lkm#x$r5&_dz(o3%9h$w_avhhy2g3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['13.60.245.179', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['13.60.218.112', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -106,6 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

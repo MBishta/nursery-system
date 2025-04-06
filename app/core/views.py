@@ -7,7 +7,7 @@ from .models import (
     NurseryExpense,
     ChildAttendance,
     TeacherAttendance,
-    Teacher
+    Teacher, Parent
 )
 
 from .forms import ChildRegistrationForm
@@ -74,6 +74,12 @@ def record_attendance(request):
         form = ChildAttendanceForm()
 
     return render(request, 'core/record_attendance.html', {'form': form, 'message': message})
+
+from .models import Child
+
+def list_children(request):
+    children = Child.objects.select_related('parent').all()
+    return render(request, 'core/list_children.html', {'children': children})
 
 
 def record_checkout(request):
@@ -159,3 +165,23 @@ def register_parent(request):
     else:
         form = ParentForm()
     return render(request, 'core/register_parent.html', {'form': form})
+
+def list_parents(request):
+    parents = Parent.objects.all()
+    return render(request, 'core/list_parents.html', {'parents': parents})
+
+def edit_parent(request, parent_id):
+    parent = get_object_or_404(Parent, id=parent_id)
+    if request.method == 'POST':
+        form = ParentForm(request.POST, instance=parent)
+        if form.is_valid():
+            form.save()
+            return redirect('list_parents')
+    else:
+        form = ParentForm(instance=parent)
+    return render(request, 'core/edit_parent.html', {'form': form, 'parent': parent})
+
+def delete_parent(request, parent_id):
+    parent = get_object_or_404(Parent, id=parent_id)
+    parent.delete()
+    return redirect('list_parents')

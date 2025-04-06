@@ -21,7 +21,9 @@ from django.urls import path
 
 from core.views import ( 
                         home, reports_dashboard, register_child, record_attendance, record_checkout, register_teacher, 
-                        list_teachers, edit_teacher, delete_teacher, record_teacher_attendance, register_parent )
+                        list_teachers, edit_teacher, delete_teacher, record_teacher_attendance, register_parent, list_parents, edit_parent,
+                        delete_parent, list_children
+                        )
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
@@ -34,5 +36,10 @@ urlpatterns = [
     path('teachers/edit/<int:teacher_id>/', edit_teacher, name='edit_teacher'),
     path('teachers/delete/<int:teacher_id>/', delete_teacher, name='delete_teacher'),
     path('record-teacher-attendance/', record_teacher_attendance, name='record_teacher_attendance'),
-    path('register-parent/', register_parent, name='register_parent')
-]
+    path('register-parent/', register_parent, name='register_parent'),
+    path('parents/', list_parents, name='list_parents'),
+    path('parents/edit/<int:parent_id>/', edit_parent, name='edit_parent'),
+    path('parents/delete/<int:parent_id>/', delete_parent, name='delete_parent'),
+    path('children/', list_children, name='list_children'),
+
+ ]
